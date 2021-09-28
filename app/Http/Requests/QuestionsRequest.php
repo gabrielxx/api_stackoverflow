@@ -15,7 +15,17 @@ class QuestionsRequest extends FormRequest
     {
         return true;
     }
+    public function messages()
+    {
+        return [
+            "fromdate.date_format"  => "Formato de Fecha no valido: YYYY-MM-DD",
+            "todate.date_format"    => "Formato de Fecha no valido: YYYY-MM-DD",
+            "fromdate.date"         => "Fecha no valida",
+            "todate.date"           => "Fecha no valida",  
+            "tagged.required"       => "Campo obligatorio"
 
+        ];
+    }
     /**
      * Get the validation rules that apply to the request.
      *
@@ -25,8 +35,8 @@ class QuestionsRequest extends FormRequest
     {
         return [
             'tagged' => 'required',
-            'todate' => 'date',
-            'romdate' => 'date'
+            'todate' => 'date|date_format:Y-m-d',
+            'fromdate' => 'date|date_format:Y-m-d'
         ];
     }
 }
