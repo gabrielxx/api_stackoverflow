@@ -7,7 +7,7 @@ use App\Http\Requests\QuestionsRequest;
 class StackOverflowController extends Controller
 {
 
-    public function questions(QuestionsRequest $request){
+    public function getQuestions(QuestionsRequest $request){
         $params = $request->validated();
         $params['site'] = 'stackoverflow';
         return $this->sendRequestHttp($params);
